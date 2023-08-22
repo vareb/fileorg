@@ -28,6 +28,17 @@ def organize(path):
             dest = os.path.join(category_path, file)
 
             shutil.move(source, dest)
+        else:                           # any file that does not match goes into "Other" folder
+            category = "Other"
+            category_path = os.path.join(path, category)
+
+            if not os.path.exists(category_path):
+                os.makedirs(category_path)
+
+            source = os.path.join(path, file)
+            dest = os.path.join(category_path, file)
+
+            shutil.move(source, dest)
 
 
 if __name__ == "__main__":
